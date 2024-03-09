@@ -51,4 +51,9 @@ public class StudentServiceImpl implements StudentService {
         };
         return studentRepository.findAll(studentSpecification);
     }
+
+    @Override
+    public List<Student> getAllStudentsByAllFields(String name, String surname, Integer age, String gender) {
+        return studentRepository.findAllStudents(name, surname, age, gender);
+    }
 }

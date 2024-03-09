@@ -17,7 +17,7 @@ import java.util.List;
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<Student>> getAllStudents(
             @RequestParam(value = "Name", required = false) String name,
             @RequestParam(value = "Surname", required = false) String surname
@@ -28,5 +28,15 @@ public class StudentController {
     @GetMapping("/like")
     public ResponseEntity<List<Student>> getStudentsLikeName(@RequestParam(value = "Name", required = false) String name) {
         return ResponseEntity.ok(studentService.getStudentsLikeName(name));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Student>> getAllStudentsByAllFields(
+            @RequestParam(value = "Name", required = false) String name,
+            @RequestParam(value = "Surname", required = false) String surname,
+            @RequestParam(value = "Age", required = false) Integer age,
+            @RequestParam(value = "Gender", required = false) String gender
+    ) {
+        return ResponseEntity.ok(studentService.getAllStudentsByAllFields(name, surname, age, gender));
     }
 }
