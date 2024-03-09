@@ -1,13 +1,11 @@
 package az.ingress.paginationspecification.controller;
 
+import az.ingress.paginationspecification.dto.SearchCriteria;
 import az.ingress.paginationspecification.entity.Student;
 import az.ingress.paginationspecification.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,5 +41,10 @@ public class StudentController {
     @GetMapping("/all1")
     public ResponseEntity<List<Student>> getAllStudents(Student student) {
         return ResponseEntity.ok(studentService.getAllStudents(student));
+    }
+
+    @GetMapping("/all2")
+    public ResponseEntity<List<Student>> getAllStudents(@RequestBody List<SearchCriteria> searchCriteriaList) {
+        return ResponseEntity.ok(studentService.getAllStudents(searchCriteriaList));
     }
 }

@@ -1,14 +1,15 @@
 package az.ingress.paginationspecification.service.impl;
 
+import az.ingress.paginationspecification.dto.SearchCriteria;
 import az.ingress.paginationspecification.entity.Student;
 import az.ingress.paginationspecification.repository.StudentRepository;
 import az.ingress.paginationspecification.service.StudentService;
+import az.ingress.paginationspecification.specification.StudentSpecification;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.collection.internal.StandardIdentifierBagSemantics;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -87,6 +88,13 @@ public class StudentServiceImpl implements StudentService {
             return query.getRestriction();
         };
 
+        return studentRepository.findAll(studentSpecification);
+    }
+
+    @Override
+    public List<Student> getAllStudents(List<SearchCriteria> searchCriteriaList) {
+        StudentSpecification studentSpecification = new StudentSpecification();
+        searchCriteriaList.forEach(studentSpecification::add);
         return studentRepository.findAll(studentSpecification);
     }
 }

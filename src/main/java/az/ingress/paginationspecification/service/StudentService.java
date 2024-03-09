@@ -1,7 +1,7 @@
 package az.ingress.paginationspecification.service;
 
+import az.ingress.paginationspecification.dto.SearchCriteria;
 import az.ingress.paginationspecification.entity.Student;
-import az.ingress.paginationspecification.repository.StudentRepository;
 
 import java.util.List;
 
@@ -13,4 +13,6 @@ public interface StudentService {
     List<Student> getAllStudentsByAllFields(String name, String surname, Integer age, String gender);
 
     List<Student> getAllStudents(Student student);
+
+    List<Student> getAllStudents(List<SearchCriteria> searchCriteriaList);
 }
