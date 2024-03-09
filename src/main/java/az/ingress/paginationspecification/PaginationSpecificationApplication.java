@@ -9,5 +9,4 @@ public class PaginationSpecificationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PaginationSpecificationApplication.class, args);
 	}
-
 }
