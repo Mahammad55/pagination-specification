@@ -39,4 +39,9 @@ public class StudentController {
     ) {
         return ResponseEntity.ok(studentService.getAllStudentsByAllFields(name, surname, age, gender));
     }
+
+    @GetMapping("/all1")
+    public ResponseEntity<List<Student>> getAllStudents(Student student) {
+        return ResponseEntity.ok(studentService.getAllStudents(student));
+    }
 }
