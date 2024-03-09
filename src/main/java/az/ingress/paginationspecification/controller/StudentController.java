@@ -17,11 +17,16 @@ import java.util.List;
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Student>> getAllStudents(
             @RequestParam(value = "Name", required = false) String name,
             @RequestParam(value = "Surname", required = false) String surname
     ) {
         return ResponseEntity.ok(studentService.getAllStudents(name, surname));
+    }
+
+    @GetMapping("/like")
+    public ResponseEntity<List<Student>> getStudentsLikeName(@RequestParam(value = "Name", required = false) String name) {
+        return ResponseEntity.ok(studentService.getStudentsLikeName(name));
     }
 }

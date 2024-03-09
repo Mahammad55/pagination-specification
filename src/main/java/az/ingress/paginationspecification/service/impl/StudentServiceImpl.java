@@ -3,7 +3,10 @@ package az.ingress.paginationspecification.service.impl;
 import az.ingress.paginationspecification.entity.Student;
 import az.ingress.paginationspecification.repository.StudentRepository;
 import az.ingress.paginationspecification.service.StudentService;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -35,6 +38,17 @@ public class StudentServiceImpl implements StudentService {
             return query.getRestriction();
         };
 
+        return studentRepository.findAll(studentSpecification);
+    }
+
+    @Override
+    public List<Student> getStudentsLikeName(String name) {
+        Specification<Student> studentSpecification = new Specification<Student>() {
+            @Override
+            public Predicate toPredicate(Root<Student> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.like(root.get("name"), "%" + name + "%");
+            }
+        };
         return studentRepository.findAll(studentSpecification);
     }
 }

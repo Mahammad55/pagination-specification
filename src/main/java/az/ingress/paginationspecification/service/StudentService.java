@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface StudentService {
     List<Student> getAllStudents(String name, String surname);
+
+    List<Student> getStudentsLikeName(String name);
 }
