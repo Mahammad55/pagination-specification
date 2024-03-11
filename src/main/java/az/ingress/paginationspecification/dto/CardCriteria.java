@@ -4,13 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageCriteria {
-    private Integer pageSize;
+public class CardCriteria {
+    private String cardName;
 
-    private Integer pageNumber;
+    private String cardNumber;
 
-    private String[] sort;
+    private Date expirationDateFrom;
+
+    private Date expirationDateTo;
 }

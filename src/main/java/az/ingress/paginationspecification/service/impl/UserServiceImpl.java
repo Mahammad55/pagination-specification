@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static az.ingress.paginationspecification.enums.CriteriaConstant.*;
-import static az.ingress.paginationspecification.mapper.PageableMapper.mapToPageableResponse;
+import static az.ingress.paginationspecification.mapper.PageableMapper.mapToUserPageableResponse;
 
 @Service
 @RequiredArgsConstructor
@@ -52,6 +52,6 @@ public class UserServiceImpl implements UserService {
         }
 
         Page<User> userPage = userRepository.findAll(pageable);
-        return mapToPageableResponse(userPage);
+        return mapToUserPageableResponse(userPage);
     }
 }
