@@ -1,5 +1,6 @@
 package az.ingress.paginationspecification.dto;
 
+import az.ingress.paginationspecification.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PageableUserResponse {
-    private List<UserResponse> userResponseList;
+public class PageableUser {
+    private List<User> userList;
 
     private Integer pageNumber;
 
