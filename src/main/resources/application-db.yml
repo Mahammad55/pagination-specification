@@ -1,12 +1,17 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3305/app
+    url: jdbc:postgresql://localhost:${PORT:5439}/db?currentSchema=public
     username: root
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 12345
+    driver-class-name: org.postgresql.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
+    open-in-view: false
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: public
+        format_sql: true

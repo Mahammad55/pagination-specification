@@ -1,16 +1,17 @@
 version: '3.8'
 
 services:
-  custom-mysql:
-    image: mysql
+  custom-postgres:
+    image: postgres
     container_name: jpa-specification-pagination
     ports:
-      - '3305:3306'
+      - '5439:5432'
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=app
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=db
     volumes:
-      - db:/var/lib/mysql
+      - db:/var/lib/postgresql/data
 
 volumes:
   db:
